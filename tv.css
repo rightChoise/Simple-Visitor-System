@@ -1,0 +1,88 @@
+/* ===== TV display — flexbox + opacity/transform only, so old TV browsers stay smooth ===== */
+html{font-size:1.04vw}
+@media (max-width:900px){html{font-size:10px}}
+*{box-sizing:border-box}
+body{margin:0;height:100vh;overflow:hidden;background:#0c1411;color:#f1f5f2;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+.wrap{height:100vh;display:flex;flex-direction:column;padding:2.6rem 3.4rem 2.8rem}
+
+/* header */
+.bar{display:flex;align-items:center;justify-content:space-between;height:4rem;flex:none}
+.brand{display:flex;align-items:center}
+.logo{width:3.4rem;height:3.4rem;border-radius:1.1rem;background:#1b3a2e;color:#7ee2b0;display:flex;align-items:center;justify-content:center;margin-right:1.1rem}
+.logo svg{width:1.8rem;height:1.8rem}
+.bt b{display:block;font-size:1.35rem;font-weight:650;letter-spacing:-.01em}
+.bt small{display:block;font-size:.95rem;color:#7f9488;margin-top:.1rem}
+.right{display:flex;align-items:center}
+.status{display:flex;align-items:center;font-size:1rem;color:#8ea397;margin-right:1.6rem}
+.status i{width:.65rem;height:.65rem;border-radius:50%;background:#e5b04b;margin-right:.6rem}
+.status.ok i{background:#5fd9a0}
+.chipbtn{font:inherit;font-size:1rem;color:#c8d6cd;background:#16231d;border:2px solid #1f3128;border-radius:99px;padding:.5rem 1.2rem;margin-right:1.6rem;cursor:pointer;outline:none}
+.chipbtn:focus{border-color:#5fd9a0}
+.chipbtn.on{color:#8cf0bd}
+.clock{font-size:2rem;font-weight:300;letter-spacing:.02em;color:#e8efe9;min-width:7.5rem;text-align:right}
+
+/* body */
+.body{flex:1;display:flex;min-height:0;padding-top:2.4rem}
+.stage{flex:1;display:flex;align-items:center;min-width:0;padding-right:3.4rem}
+.side{width:25rem;flex:none;display:flex;flex-direction:column;justify-content:space-between}
+
+/* idle */
+.idle{width:100%;text-align:center}
+.idle-ic{width:6.4rem;height:6.4rem;border-radius:2rem;background:#16251e;color:#5fd9a0;display:flex;align-items:center;justify-content:center;margin:0 auto 2rem}
+.idle-ic svg{width:3rem;height:3rem}
+.idle h1{margin:0 0 1rem;font-size:3.6rem;font-weight:650;letter-spacing:-.03em}
+.idle p{margin:0 auto;font-size:1.35rem;color:#8ea397;max-width:30rem;line-height:1.5}
+
+/* arrival */
+.arrival{display:flex;align-items:center;width:100%}
+.arrival.pop{animation:arrive .8s cubic-bezier(.2,.8,.2,1)}
+@keyframes arrive{from{opacity:0;transform:translateY(2.2rem)}to{opacity:1;transform:none}}
+.photo{width:22rem;height:28rem;max-height:62vh;flex:none;border-radius:2rem;overflow:hidden;background:#16251e;margin-right:4rem;position:relative}
+.photo img{position:absolute;left:0;top:0;width:100%;height:100%;object-fit:cover;z-index:2}
+.init{position:absolute;left:0;top:0;right:0;bottom:0;display:flex;align-items:center;justify-content:center;font-size:8rem;font-weight:300;color:#5fd9a0;background:#16251e}
+.info{flex:1;min-width:0}
+.badge{display:inline-flex;align-items:center;font-size:1.05rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#8ea397;margin-bottom:1.4rem}
+.badge i{width:.8rem;height:.8rem;border-radius:50%;background:#5a6e63;margin-right:.8rem}
+.badge.new{color:#7ee8b0}
+.badge.new i{background:#5fd9a0;animation:beat 1.3s ease-in-out infinite}
+@keyframes beat{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.7);opacity:.45}}
+.info h1{margin:0 0 1.6rem;font-size:5.4rem;line-height:1.04;font-weight:680;letter-spacing:-.035em;word-wrap:break-word;overflow-wrap:break-word}
+.info h1.lg{font-size:4.2rem}.info h1.xl{font-size:3.4rem}
+.pill{display:inline-block;max-width:100%;padding:.7rem 1.7rem;border-radius:1.6rem;background:#5fd9a0;color:#07281a;font-size:1.7rem;font-weight:650;margin-bottom:2.4rem;word-wrap:break-word}
+.facts{list-style:none;margin:0;padding:0;border-top:2px solid #1d2d25}
+.facts li{display:flex;align-items:baseline;padding:1.15rem 0;border-bottom:2px solid #1d2d25}
+.facts span{width:9rem;flex:none;font-size:1.1rem;color:#7f9488;letter-spacing:.04em}
+.facts b{font-size:1.8rem;font-weight:550}
+.facts em{font-style:normal;font-size:1.1rem;color:#7f9488;margin-left:1.2rem}
+.tag{margin-top:1.4rem;font-size:1.1rem;color:#8ea397;min-height:1.4rem}
+
+/* side */
+.qr-card{background:#131f19;border:2px solid #1d2d25;border-radius:2rem;padding:1.8rem;text-align:center}
+.qr{width:15rem;height:15rem;margin:0 auto 1.3rem;background:#fff;border-radius:1.2rem;padding:.6rem;overflow:hidden}
+.qr svg{display:block;width:100%;height:100%}
+.qr-t b{display:block;font-size:1.45rem;font-weight:650;margin-bottom:.45rem}
+.qr-t span{display:block;font-size:.95rem;color:#7f9488;word-wrap:break-word;overflow-wrap:break-word}
+.recent{margin-top:1.8rem;min-height:0;overflow:hidden}
+.recent h3{margin:0 0 1rem;font-size:.95rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#6f857a}
+.recent ul{list-style:none;margin:0;padding:0}
+.recent li{display:flex;align-items:center;padding:.8rem 0;border-top:2px solid #17251e}
+.recent .av{width:2.8rem;height:2.8rem;border-radius:50%;flex:none;background:#1a2b23 center/cover no-repeat;color:#5fd9a0;font-size:1.2rem;font-weight:600;display:flex;align-items:center;justify-content:center;margin-right:1rem}
+.recent .tx{flex:1;min-width:0}
+.recent .tx b{display:block;font-size:1.15rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.recent .tx small{display:block;font-size:.9rem;color:#7f9488;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.recent .tm{font-size:.9rem;color:#6f857a;margin-left:.8rem;flex:none}
+
+/* sound unlock + flash */
+.unlock{position:fixed;left:0;top:0;right:0;bottom:0;z-index:20;background:rgba(7,12,10,.94);display:flex;align-items:center;justify-content:center}
+.unlock-card{text-align:center;max-width:34rem}
+.bell{width:6rem;height:6rem;border-radius:50%;background:#16251e;color:#5fd9a0;display:flex;align-items:center;justify-content:center;margin:0 auto 1.8rem}
+.bell svg{width:2.8rem;height:2.8rem}
+.unlock h2{margin:0 0 .8rem;font-size:2.6rem;font-weight:650;letter-spacing:-.02em}
+.unlock p{margin:0 0 2rem;font-size:1.3rem;color:#8ea397;line-height:1.5}
+.unlock p b{color:#e8efe9}
+.unlock button{font:inherit;font-size:1.3rem;font-weight:650;color:#07281a;background:#5fd9a0;border:0;border-radius:99px;padding:1rem 3rem;cursor:pointer;outline:3px solid transparent;outline-offset:4px}
+.unlock button:focus{outline-color:#b6f3d3}
+.flash{position:fixed;left:0;top:0;right:0;bottom:0;z-index:10;pointer-events:none;opacity:0;background:radial-gradient(ellipse at 40% 45%,rgba(95,217,160,.28),rgba(95,217,160,0) 65%)}
+.flash.go{animation:flash 1.6s ease-out}
+@keyframes flash{0%{opacity:0}18%{opacity:1}100%{opacity:0}}
